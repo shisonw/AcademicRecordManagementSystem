@@ -1,6 +1,6 @@
 const { MongoClient, ObjectId } = require('mongodb');
 
-process.env.MONGODB_URI = 'mongodb://127.0.0.1:27017';
+process.env.MONGODB_URI = 'mongodb+srv://Shison:Shison0420@clusterp.btdnqrz.mongodb.net/';
 
 if (!process.env.MONGODB_URI) {
     // throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
