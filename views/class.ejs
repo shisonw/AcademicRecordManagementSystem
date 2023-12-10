@@ -1,0 +1,92 @@
+<%- include('layout_start') %>
+<div class="bg">
+<div class="container">
+    <div class="input-group mb-3">
+        <h1 class="display-1"><%= targetClass.cname %></h1>
+    </div>
+    
+    <form id="class_form" action="" method="POST">
+    <table class="table" 
+        data-toggle="table" 
+        data-search="true"
+        data-show-search-clear-button="true">
+        <thead class="thead-light">
+            <tr>
+            <th class="col-md-3" data-field="name" data-sortable="true">Name</th>
+            <th class="col-md-3" data-field="sid" data-sortable="true">sID</th>
+            <th class="col-md-3" data-field="dob" data-sortable="true">DoB</th>
+            <th class="col-md-3" data-field="hkid" data-sortable="true">HKID</th>
+            <th class="col-md-1"></th>
+            </tr>
+        </thead>
+        <tbody id="table_body">
+            <% for (var s of students) { %>
+                <% if ((locals.sid && sid == s.sid) || (type == "teacher")) { %>
+                <tr class='clickable-row' data-href='/student/<%= targetClass._id %>/<%= s._id %>'>
+                    <td><%= s.sname %></td>
+                    <td><%= s.sid %></td>
+                    <% mDate = new Date(s.dob) %>
+                    <% mMonth = mDate.getMonth() + 1 %>
+                    <td><%= mDate.getDate() %>/<%= mMonth %>/<%= mDate.getFullYear() %></td>
+                    <td><%= s.hkid %></td>
+                    <td><a class="btn btn-success" href='/student/<%= targetClass._id %>/<%= s._id %>'>View</a></td>
+                </tr>
+                <% } %>
+            <% } %>
+        </tbody>
+    </table>
+    </form>
+    <% if (type === 'teacher') { %> 
+        <div class="text-center">
+            <button id="add_btn" type="button" class="btn btn-primary">Add</button>
+        </div>
+    <% } %>
+
+</div>
+</div>
+
+
+<script>
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.location = $(this).data("href");
+        });
+
+        $("#search_btn").click(function() {
+           location.href = window.location.href.split('?')[0] + "?searchText=" + $("#searchText").val(); ;
+        });
+
+        $("#add_btn").click(function() {
+            if (!$('#edit_row').length) {
+                $("#table_body").append('<tr id="edit_row"><td><input class="form-control" type="text" name="sname" placeholder="Name" maxlength="50" required></td><td><input class="form-control" type="text" name="sid" placeholder="Student ID" required></td><td><input class="form-control" type="date" name="dob" placeholder="Date of Birth" required></td><td><input class="form-control" type="text" name="hkid" placeholder="HKID"></td><td><button id="save_btn" type="submit" class="btn btn-primary" required>Save</button></td> </tr>')
+            }
+        });
+
+        $("#save_btn").click(function() {
+            if (!$('#edit_row').length) {
+                $('#class-form').attr('action', window.location.href);
+            }
+        });
+
+    });
+
+</script>
+<script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+
+<%- include('layout_end') %>
+
+
+<style>
+    .bg {
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: aqua;
+        overflow: hidden;
+        background-image: url('../images/bg2.jpg')
+    }
+</style>
+

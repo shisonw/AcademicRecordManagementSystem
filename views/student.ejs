@@ -1,0 +1,146 @@
+<%- include('layout_start') %>
+
+<% var scores = [] %>
+<div class="bg">
+<div class=" row">
+<div class="col-md-2">
+    <ul class="list-group">
+        <li class="list-group-item"><button id="back_btn" class="btn btn-primary">Back</button></li>
+    <% for (var student of students) { %>
+        <% if ((locals.sid && sid == student.sid) || (type == "teacher")) { %>
+            <% if (targetStudent[0].sid == student.sid) { %>
+                <li class="list-group-item active"><a href="/student/<%= classid %>/<%= student._id %>" style="text-decoration: none; color: white;"><%= student.sname %></a></li>
+            <% } else { %>
+                <li class="list-group-item"><a href="/student/<%= classid %>/<%= student._id %>" style="text-decoration: none; color: blue;"><%= student.sname %></a></li>
+            <% } %>
+        <% } %>
+    <% } %>
+    </ul>
+</div>
+<div class="col-md-10">
+    <div class="input-group mb-3">
+        </div>
+        <form id="class_form" action="" method="POST">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                    <th class="col-md-1">Name:</th>
+                    <th class="col-md-1">sID:</th>
+                    <th class="col-md-8">Test:</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr>
+                        <td><%= targetStudent[0].sname %></td>
+                        <td><%= targetStudent[0].sid %></td>
+                        <td>
+                            <table id="table_body" class="table mb-0"
+                                data-toggle="table" 
+                                data-search="true"
+                                data-show-search-clear-button="true">
+                                <thead class="thead-light">
+                                    <tr>
+                                    <th class="col-md-3" data-field="name" data-sortable="true">Test Name</th>
+                                    <th class="col-md-3" data-field="score" data-sortable="true">Score</th>
+                                    <th class="col-md-3" data-field="date" data-sortable="true">Date</th>
+                                    <th class="col-md-1"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (targetStudent[0].hasOwnProperty("tests")) { %>
+                                        <% for (var t of targetStudent[0].tests) { %>
+                                            <% scores.push(t.score) %>
+                                            <tr>
+                                                <td><%= t.testname %></td>
+                                                <td><%= t.score %></td>
+                                                <% mDate = new Date(t.date) %>
+                                                <% mMonth = mDate.getMonth() + 1 %>
+                                                <td><%= mDate.getDate() %>/<%= mMonth %>/<%= mDate.getFullYear() %></td>
+                                                <td></td>
+                                            </tr>
+                                        <% } %>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                            <% if (type === 'teacher') { %> 
+                            <div class="text-center">
+                                <button id="add_btn" type="button" class="btn btn-primary">Add</button>
+                            </div>
+                            <% } %>
+                            <table id="table_body" class="table mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                    <th class="col-md-3" data-field="min" data-sortable="true">Min score</th>
+                                    <th class="col-md-3" data-field="max" data-sortable="true">Max score</th>
+                                    <th class="col-md-3" data-field="average" data-sortable="true">Average score</th>
+                                    <th class="col-md-1"></th>
+                                    </tr>
+                                </thead>
+                                <% var min = Math.min(...scores); var max = Math.max(...scores); var sum = 0; scores.forEach(num => sum += parseInt(num)) %>
+                                <tbody>
+                                    <tr>
+                                        <td><%= min %></td>
+                                        <td><%= max %></td>
+                                        <td><%= sum / scores.length %></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+<script>
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.location = $(this).data("href");
+        });
+
+        $('#back_btn').on('click', function(e){
+            e.preventDefault();
+            window.history.back();
+        });
+
+        $("#add_btn").click(function() {
+            if (!$('#edit_row').length) {
+                $("#table_body").append('<tr id="edit_row"><td><input class="form-control" type="text" name="testname" placeholder="Test Name" maxlength="50" required></td><td><input class="form-control" type="number" name="score" placeholder="Score" min="0" max="10" required></td><td><input class="form-control" type="date" name="date" placeholder="Date" required></td><td><button id="save_btn" type="submit" class="btn btn-primary" required>Save</button></td> </tr>')
+            }
+        });
+
+        $("#save_btn").click(function() {
+            if (!$('#edit_row').length) {
+                $('#class-form').attr('action', window.location.href);
+            }
+        });
+
+    });
+
+</script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+
+<%- include('layout_end') %>
+
+<style>
+    .bg {
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: aqua;
+        overflow: hidden;
+        padding:10px;
+        background-image: url('../../images/bg2.jpg')
+    }
+</style>

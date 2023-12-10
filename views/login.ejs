@@ -1,0 +1,34 @@
+<%- include('layout_start') %>
+
+<div class="container">
+<h1 class="display-1">Login</h1>
+<form id="loginform" action="/login" method="post">
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example1">User name</label>
+    <input type="text" id="username" name="username" class="form-control" required/>
+  </div>
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">Password</label>
+    <input type="password" id="password" name="password" class="form-control" required/>
+  </div>
+
+  <div class="row mb-4">
+      <a href="/signup">Do not have a account?</a>
+  </div>
+  <div class="row mb-4">
+      <a href="/forgetPassword">Forget password?</a>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+ 
+</form>
+</div>
+
+<% if (typeof popupMessage !== 'undefined' && popupMessage === 'CHANGE_PASSWORD_SUCCESS') { %>
+<script>
+    window.alert("Change password success");
+</script>
+<% } %>
+
+<%- include('layout_end') %>

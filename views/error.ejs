@@ -1,0 +1,16 @@
+<%- include('layout_start') %>
+
+<h1><%= message %></h1>
+<button id="back_btn" class="btn btn-primary">Back</button>
+
+<script>
+    jQuery(document).ready(function($) {
+        $('#back_btn').on('click', function(e){
+            e.preventDefault();
+            window.history.back();
+        });
+    });
+
+</script>
+
+<%- include('layout_end') %>

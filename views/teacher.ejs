@@ -1,0 +1,104 @@
+<%- include('layout_start') %>
+
+<div class="bg">
+    <div class="container">
+        <div class="input-group mb-3">
+            <h2 class="display-3">Teacher set class</h2>
+        </div>
+        <div class="input-group mb-3">
+            <h2 class="display-5">All teachers</h2>
+        </div>
+
+        <table class="table" 
+            data-toggle="table" 
+            data-search="true"
+            data-show-search-clear-button="true">
+            <thead class="thead-light">
+                <tr>
+                <th class="col-md-3" data-field="username" data-sortable="true">Username</th>
+                <th class="col-md-3" data-field="hkid" data-sortable="true">HKID</th>
+                <th class="col-md-3" data-field="class" data-sortable="true">Class</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+                <% for (var t of teachers) { %>
+                    <tr class='clickable-row'>
+                        <td><%= t.username %></td>
+                        <td><%= t.hkid %></td>
+                        <td><%= t.classname %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <br>
+        <div class="input-group mb-3">
+            <h2 class="display-5">All classes</h2>
+        </div>
+        <table class="table" >
+            <thead class="thead-light">
+                <tr>
+                <th class="col-md-3" data-field="name" data-sortable="true">Class</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+                <% for (var c of classes) { %>
+                    <tr class='clickable-row'>
+                        <td><%= c.cname %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <br>
+        <div class="input-group mb-3">
+            <h2 class="display-5">Change teacher class</h2>
+        </div>
+        <form action="/teacher" method="post" style="background-color: white; padding: 10px;" >
+            <div class="row">
+                <div class="col">
+                    <select name="username" class="form-select" aria-label="Default select example" required>
+                        <option value="" selected>Select Username</option>
+                        <% for (var t of teachers) { %>
+                            <option value="<%= t.username %>"><%= t.username %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="col">
+                    <select  name="class" class="form-select" aria-label="Default select example" required>
+                        <option value="" selected>Select Class</option>
+                        <% for (var c of classes) { %>
+                            <option value="<%= c.cname %>"><%= c.cname %></option>
+                        <% } %>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit_btn">Change class</button>
+        </form>
+
+    </div>
+</div>
+
+
+<%- include('layout_end') %>
+
+<script>
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+
+<style>
+    .bg {
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: aqua;
+        overflow: hidden;
+        padding:10px;
+        background-image: url('../../images/bg2.jpg')
+    }
+</style>
