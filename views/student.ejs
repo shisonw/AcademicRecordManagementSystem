@@ -112,7 +112,7 @@
 
         $("#add_btn").click(function() {
             if (!$('#edit_row').length) {
-                $("#table_body").append('<tr id="edit_row"><td><input class="form-control" type="text" name="testname" placeholder="Test Name" maxlength="50" required></td><td><input class="form-control" type="number" name="score" placeholder="Score" min="0" max="10" required></td><td><input class="form-control" type="date" name="date" placeholder="Date" required></td><td><button id="save_btn" type="submit" class="btn btn-primary" required>Save</button></td> </tr>')
+                $("#table_body").append('<tr id="edit_row"><td><input class="form-control" type="text" name="testname" placeholder="Test Name" maxlength="50" required></td><td><input class="form-control" type="number" name="score" placeholder="Score" min="0" max="100" required></td><td><input class="form-control" type="date" name="date" placeholder="Date" required></td><td><button id="save_btn" type="submit" class="btn btn-primary" required>Save</button></td> </tr>')
             }
         });
 
