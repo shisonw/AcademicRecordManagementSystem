@@ -1,0 +1,39 @@
+[{
+  "_id": {
+    "$oid": "6537ba0054e801f9a8cf8670"
+  },
+  "username": "student1",
+  "password": "s1234",
+  "hkid": "t4321",
+  "type": "student",
+  "sid": "s7635",
+  "classname": "Class1"
+},
+{
+  "_id": {
+    "$oid": "65505b4d89283f9f690cb1e3"
+  },
+  "username": "teacher1",
+  "password": "123456",
+  "hkid": "t4312",
+  "type": "teacher",
+  "classname": "Class1"
+},
+{
+  "_id": {
+    "$oid": "6574b9564e02016c036eab48"
+  },
+  "username": "admin",
+  "password": "1234",
+  "type": "admin"
+},
+{
+  "_id": {
+    "$oid": "6574d7ef4e02016c036eab90"
+  },
+  "username": "teacher2",
+  "password": "123456",
+  "hkid": "t1221",
+  "type": "teacher",
+  "classname": "Class2"
+}]

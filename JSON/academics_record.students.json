@@ -1,0 +1,139 @@
+[{
+  "_id": {
+    "$oid": "65363e1876e4e905ad512be7"
+  },
+  "sname": "Tommy",
+  "sid": "s7635",
+  "dob": {
+    "$date": "2001-01-20T00:00:00.000Z"
+  },
+  "hkid": "E1357",
+  "tests": [
+    {
+      "testname": "Test1",
+      "score": 80,
+      "date": {
+        "$date": "2023-05-23T00:00:00.000Z"
+      }
+    },
+    {
+      "testname": "Test2",
+      "score": 70,
+      "date": {
+        "$date": "2023-05-26T00:00:00.000Z"
+      }
+    },
+    {
+      "testname": "test",
+      "score": "56",
+      "date": "2023-10-06"
+    },
+    {
+      "testname": "test4",
+      "score": "33",
+      "date": "2023-10-27"
+    },
+    {
+      "testname": "test5",
+      "score": "12",
+      "date": "2023-10-05"
+    },
+    {
+      "testname": "test6",
+      "score": "34",
+      "date": "2023-10-26"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65363e1876e4e905ad512be8"
+  },
+  "sname": "Bill",
+  "sid": "s1234",
+  "dob": {
+    "$date": "2001-05-21T00:00:00.000Z"
+  },
+  "hkid": "B2468",
+  "tests": [
+    {
+      "testname": "Test1",
+      "score": 90,
+      "date": {
+        "$date": "2023-05-23T00:00:00.000Z"
+      }
+    },
+    {
+      "testname": "Test2",
+      "score": 60,
+      "date": {
+        "$date": "2023-05-26T00:00:00.000Z"
+      }
+    },
+    {
+      "testname": "test3",
+      "score": "80",
+      "date": "2023-10-11"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65374381c2e080655fe6c35b"
+  },
+  "sname": "Alvin",
+  "sid": "a1234",
+  "dob": "2001-02-03",
+  "hkid": "Y1234",
+  "tests": [
+    {
+      "testname": "Test1",
+      "score": "80",
+      "date": "2023-10-19"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6537b48aa408762591fc6cdc"
+  },
+  "sname": "Mary",
+  "sid": "a4321",
+  "dob": "2000-07-18",
+  "hkid": "Y5432",
+  "tests": [
+    {
+      "testname": "Test1",
+      "score": "80",
+      "date": "2023-10-10"
+    },
+    {
+      "testname": "Test2",
+      "score": "60",
+      "date": "2023-10-11"
+    },
+    {
+      "testname": "Test2",
+      "score": "60",
+      "date": "2023-10-11"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6537b802c22f424f80074328"
+  },
+  "sname": "Peter",
+  "sid": "s4321",
+  "dob": "2023-10-13",
+  "hkid": "B4323"
+},
+{
+  "_id": {
+    "$oid": "6537b9cd54e801f9a8cf866f"
+  },
+  "sname": "John",
+  "sid": "s5431",
+  "dob": "2001-07-24",
+  "hkid": "Y4321"
+}]
