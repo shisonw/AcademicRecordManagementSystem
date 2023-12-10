@@ -14,7 +14,7 @@ app.use(session({
   name: 'user', // optional
   saveUninitialized: false,
   resave: true,
-  store:MongoStore.create({mongoUrl: 'mongodb://127.0.0.1:27017/'})
+  store:MongoStore.create({mongoUrl: 'mongodb+srv://Shison:Shison0420@clusterp.btdnqrz.mongodb.net/'})
 }));
 
 var indexRouter = require('./routes/index');
